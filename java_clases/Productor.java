@@ -9,7 +9,7 @@ public class Productor extends Thread{
                 ProductoConsumidor.monitor.push();
                 sleep(1000);
             } catch (InterruptedException e) {
-                //TODO: handle exception
+                e.printStackTrace();
             }
         }
     }
