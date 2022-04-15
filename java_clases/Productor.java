@@ -7,6 +7,7 @@ public class Productor extends Thread{
         while(true){
             try {
                 ProductoConsumidor.monitor.push();
+                sleep(1000);
             } catch (InterruptedException e) {
                 //TODO: handle exception
             }
