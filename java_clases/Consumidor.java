@@ -1,25 +1,18 @@
 package Proyecto_Final.java_clases;
 
 
-public class Consumidor implements Runnable{
+public class Consumidor extends Thread{
 
     @Override
     public void run(){
-        while(true){
-            this.regionCritica();
-            this.regionNoCritica();
+        try {   
+            while(true){
+                System.out.println("El consumidor: "+Thread.currentThread().getName()+" consume "+ ProductoConsumidor.monitor.pop().p);
+                sleep(1000);
+            }   
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
-    
-
-    public void regionCritica(){
-        System.out.println("Proceso 0");
-        System.out.println("_______________________");
-        System.out.println("quitando valor: "+ProductoConsumidor.mComp.pop().p);
-    }
-
-    public void regionNoCritica(){
-
-    }
 }

@@ -11,11 +11,11 @@ public class Monitor {
     public Monitor(){
     }
 
-    public synchronized void push(Articulo nuevArticulo ) throws InterruptedException{
+    public synchronized void push() throws InterruptedException{
         while(cont == NUM_MAX){
             wait();
         }
-        cola.add(nuevArticulo);
+        cola.add(new Articulo(cont));
         System.out.println("Productor: "+Thread.currentThread().getName()+" produce en "+ cont);
         cont ++;
         notify();
