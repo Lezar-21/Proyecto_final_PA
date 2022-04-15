@@ -1,6 +1,6 @@
 package Proyecto_Final.java_clases;
 
-import java.io.InterruptedIOException;
+import java.io.InterruptedException;
 import java.util.ArrayList;
 
 public class Monitor {
