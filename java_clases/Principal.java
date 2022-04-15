@@ -1,7 +1,5 @@
 package Proyecto_Final.java_clases;
 
-import java.util.concurrent.Semaphore;
-
 import Proyecto_Final.Ventanas.Ventana;
 
 public class Principal {
