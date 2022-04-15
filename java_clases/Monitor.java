@@ -1,93 +1,40 @@
 package Proyecto_Final.java_clases;
 
+import java.io.InterruptedIOException;
+import java.util.ArrayList;
 
 public class Monitor {
-    Articulo frente,fin;
-    static final int nuMax = 10;
+    static final int NUM_MAX = 10;
+    ArrayList<Articulo> cola = new ArrayList<>();
+    int cont = 0;
     
     public Monitor(){
-        this.frente = null;
-        this.fin = null;
     }
 
-    public boolean isEmpty(){
-        return frente == null;
-    }
-
-    public synchronized void push(Articulo nuevArticulo){
-        if(count() <= nuMax){
-            if(isEmpty()){
-                this.frente = this.fin = nuevArticulo;
-            }else{
-                this.fin.setSiguiente(nuevArticulo);
-                this.fin = nuevArticulo;
-              
-                notify();
-            }
-        }else{
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Limite superado");
+    public synchronized void push(Articulo nuevArticulo ) throws InterruptedException{
+        while(cont == NUM_MAX){
+            wait();
         }
-        
+        cola.add(nuevArticulo);
+        System.out.println("Productor: "+Thread.currentThread().getName()+" produce en "+ cont);
+        cont ++;
+        notify();
     }
+
     //elimina el frente
-    public synchronized Articulo pop(){
-        Articulo val = this.peek();
-        if(isEmpty()){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    public synchronized Articulo pop() throws InterruptedException{
+        notify();
+        while(cont <= 0){
+            wait();
         }
-        if(this.frente == this.fin){
-            frente = fin = null;
-            return val;
-        }
-        this.frente = this.frente.getSiguiente();
-        if(this.count()==nuMax) notify();
-        return val;
+        Articulo eliminar = cola.get(0);
+        cola.remove(0);
+        cont --;
+        return eliminar;
     }
 
     public Articulo peek(){
-        return frente;
+        return cola.get(0);
     }
 
-    public void imprimir(){
-        if(!isEmpty()){
-            Monitor aux = new Monitor();
-            while(!isEmpty()){
-                System.out.println("Dato: "+this.frente.p);
-                aux.push(this.frente);
-                this.pop();
-            }
-            while(!aux.isEmpty()){
-                this.push(aux.frente);
-                aux.pop();
-            }
-        }
-    }
-
-    public int count(){
-        if(!isEmpty()){
-            int cont = 0;
-            Monitor aux = new Monitor();
-            while(!isEmpty()){
-                aux.push(this.frente);
-                this.pop();
-            }
-            while(!aux.isEmpty()){
-                cont++;
-                this.push(aux.frente);
-                aux.pop();
-            }
-            return cont;
-        }else{
-            return 0;
-        }
-    }
 }
