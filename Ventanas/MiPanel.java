@@ -9,10 +9,16 @@ import java.awt.Graphics2D;
 public class MiPanel extends JPanel{
     Ventana v;
     Articulo a = new Articulo(this,10, 10, 10, 30);
+    
     public MiPanel(Ventana vx){
         this.v=vx;
         this.setFocusable(true);
+        
     }
+    public void startThreat(Thread t){
+        t.start();
+    }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
