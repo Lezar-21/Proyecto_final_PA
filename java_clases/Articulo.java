@@ -18,6 +18,8 @@ public class Articulo {
         return p;
     }
 
+    public Articulo(){}
+
     public Articulo(MiPanel mpx, int xx, int xy, int xvel, int xtam){
         this.mp = mpx;
         this.x = xx;
