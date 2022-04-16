@@ -30,5 +30,6 @@ public class Articulo {
 
         g2.fillOval(x,y,tam,tam);
 
-      }
+    }
+    
 }

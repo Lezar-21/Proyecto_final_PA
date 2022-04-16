@@ -1,6 +1,13 @@
 package Proyecto_Final.java_clases;
 
+import Proyecto_Final.Ventanas.MiPanel;
+
 public class Productor extends Thread{
+
+    MiPanel mp;
+    public Productor(MiPanel mpx){
+        this.mp = mpx;
+    }
   
     @Override
     public void run(){
@@ -13,4 +20,6 @@ public class Productor extends Thread{
             }
         }
     }
+
+
 }

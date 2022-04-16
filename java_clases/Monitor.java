@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Monitor {
     static final int NUM_MAX = 10;
-    ArrayList<Articulo> cola = new ArrayList<>();
-    int cont = 0;
+    static ArrayList<Articulo> cola = new ArrayList<>();
+    static int cont = 0;
     
     public Monitor(){
     }
