@@ -17,9 +17,6 @@ public class MiPanel extends JPanel{
         this.setFocusable(true);
         
     }
-    public void startThreat(Thread t){
-        t.start();
-    }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -34,6 +31,20 @@ public class MiPanel extends JPanel{
         g2.drawLine(132, 100, 87, 71);
         g2.setColor(Color.BLACK);
         g2.fillOval(105, 39, 55, 44);
+
+        //productos de arriba
+        g2.fillOval(241, 160, 54, 54);
+        g2.fillOval(305, 214, 54, 54);
+        g2.fillOval(390, 160, 54, 54);
+        g2.fillOval(454, 214, 54, 54);
+        g2.fillOval(538, 160, 54, 54);
+        
+        //productos de abajo
+        g2.fillOval(241, 256, 54, 54);
+        g2.fillOval(305, 310, 54, 54);
+        g2.fillOval(390, 256, 54, 54);
+        g2.fillOval(454, 310, 54, 54);
+        g2.fillOval(538, 256, 54, 54);
     }
     
 }

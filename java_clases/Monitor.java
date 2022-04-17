@@ -1,7 +1,6 @@
 package Proyecto_Final.java_clases;
 
 import java.io.InterruptedException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Monitor {

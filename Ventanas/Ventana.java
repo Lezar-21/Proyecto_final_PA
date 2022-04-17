@@ -16,7 +16,7 @@ public class Ventana extends JFrame {
 
         Consumidor c = new Consumidor();
         c.setName("consumidor 1");
-        mp.startThreat(c);
+        iniciarThread(c);
 
         // Consumidor c1 = new Consumidor();
         // c1.setName("consumidor 2");
@@ -24,15 +24,25 @@ public class Ventana extends JFrame {
 
         Productor p = new Productor(mp);
         p.setName("productor 1");
-        mp.startThreat(p);
+        iniciarThread(p);
 
         // Productor p1 = new Productor(mp);
         // p1.setName("productor 2");
         // mp.startThreat(p1); 
-
-        
         
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    //este metodo usa generics para poder funcionar tanto con productores como con consumidores
+    public <T extends Thread> void iniciarThread (T t){
+        t.start();
+    }
+
+
+    public <T extends Thread> void finalizarThread (T t){
+        while(true){
+            t.wait();
+        }
     }
 }
