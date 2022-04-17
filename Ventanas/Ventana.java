@@ -9,7 +9,7 @@ public class Ventana extends JFrame {
     MiPanel mp;
     public Ventana(String titulo){
         super(titulo);
-        this.setBounds(10,10,800,400);
+        this.setBounds(10,10,800,600);
 
         mp = new MiPanel(this);
         this.add(mp);
@@ -18,17 +18,17 @@ public class Ventana extends JFrame {
         c.setName("consumidor 1");
         mp.startThreat(c);
 
-        Consumidor c1 = new Consumidor();
-        c1.setName("consumidor 2");
-        mp.startThreat(c1);
+        // Consumidor c1 = new Consumidor();
+        // c1.setName("consumidor 2");
+        // mp.startThreat(c1);
 
         Productor p = new Productor(mp);
         p.setName("productor 1");
         mp.startThreat(p);
 
-        Productor p1 = new Productor(mp);
-        p1.setName("productor 2");
-        mp.startThreat(p1); 
+        // Productor p1 = new Productor(mp);
+        // p1.setName("productor 2");
+        // mp.startThreat(p1); 
 
         
         

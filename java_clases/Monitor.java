@@ -2,10 +2,12 @@ package Proyecto_Final.java_clases;
 
 import java.io.InterruptedException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Monitor {
     static final int NUM_MAX = 10;
-    static ArrayList<Articulo> cola = new ArrayList<>();
+    
+    static LinkedList<Articulo> cola = new LinkedList<>();
     static int cont = 0;
     
     public Monitor(){
