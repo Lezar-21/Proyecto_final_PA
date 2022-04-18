@@ -18,6 +18,14 @@ public class Ventana extends JFrame {
         c.setName("consumidor 1");
         iniciarThread(c);
 
+        mp.nuevoConsumidor(c);
+
+        // Consumidor c1 = new Consumidor();
+        // c1.setName("consumidor 2");
+        // iniciarThread(c1);
+
+        // mp.nuevoConsumidor(c1);
+
         // Consumidor c1 = new Consumidor();
         // c1.setName("consumidor 2");
         // mp.startThreat(c1);
@@ -26,12 +34,30 @@ public class Ventana extends JFrame {
         p.setName("productor 1");
         iniciarThread(p);
 
+        mp.nuevoProductor(p);
+        
+        Productor p1 = new Productor(mp);
+        p1.setName("productor 2");
+        iniciarThread(p1);
+
+        mp.nuevoProductor(p1);
+
+        // Productor p2 = new Productor(mp);
+        // p2.setName("productor 1");
+        // iniciarThread(p2);
+
+        // mp.nuevoProductor(p2);
+
         // Productor p1 = new Productor(mp);
         // p1.setName("productor 2");
         // mp.startThreat(p1); 
-        
+
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        while(true){
+            mp.repaint();
+        }
     }
 
     //este metodo usa generics para poder funcionar tanto con productores como con consumidores
