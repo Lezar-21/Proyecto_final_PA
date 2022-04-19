@@ -1,15 +1,14 @@
 package Proyecto_Final.java_clases;
 
 import java.io.InterruptedException;
-
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.awt.Graphics2D;
 
 public class Monitor {
-    static final int NUM_MAX = 10;
-    
-    public static LinkedList<Articulo> cola = new LinkedList<>();
-    public static int cont = 0;
+    final int NUM_MAX = 11;
+    public LinkedList<Articulo> cola = new LinkedList<>();
+    public int cont = 0; 
     
     public Monitor(){
     }
@@ -36,13 +35,14 @@ public class Monitor {
         return eliminar;
     }
 
-    public void dibujarProductos(Graphics2D g2){
-        //arreglar esto
-        // int i = 0;
-        // while(i<cola.size()){
-        //     cola.get(i).dibujarArticulo(g2);
-        //     i++;
-        // }
-    }
+    // public void dibujarProductos(Graphics2D g2){
+    //     //arreglar esto
+    //     for(int i=0; i < cola.size();i++){
+    //         System.out.println("lugar "+i+" band "+band[i]);
+    //         if(band[i]==true){
+    //             cola.get(i).dibujarArticulo(g2);
+    //         } 
+    //     }
+    // }
 
 }

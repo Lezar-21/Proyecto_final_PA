@@ -18,11 +18,12 @@ public class Productor extends Thread{
     public void run(){
         while(true){
             try {
-                ProductoConsumidor.monitor.push();
-                sleep(1000);
+                this.producir();
+                this.agregarArticulo();
+                sleep(2500); 
             } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                //TODO: handle exception
+            }     
         }
     }
     
@@ -37,5 +38,19 @@ public class Productor extends Thread{
         g2.fillOval(x[5],y[6] + abajo , x[6], y[7] );
     }
 
+    public void producir(){
+        try{
+            ProductoConsumidor.monitor.push();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void agregarArticulo(){
+        int cont = ProductoConsumidor.monitor.cont;
+        Articulo aux = ProductoConsumidor.monitor.cola.get(cont-1);
+        mp.ArticList.add(aux);
+        mp.repaint(); 
+    }
 
 }

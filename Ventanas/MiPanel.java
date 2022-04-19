@@ -20,10 +20,13 @@ public class MiPanel extends JPanel{
     int contConsum = 0;
     ArrayList<Consumidor> consumList = new ArrayList<>();
 
+    public ArrayList<Articulo> ArticList = new ArrayList<>();
+
     public MiPanel(Ventana vx){
         this.v=vx;
         this.setFocusable(true);    
     }
+
 
     public void nuevoProductor(Productor t){
         producList.add(t);
@@ -32,6 +35,13 @@ public class MiPanel extends JPanel{
     public void nuevoConsumidor(Consumidor t){
         consumList.add(t);
         contConsum ++;
+    }
+
+    public void dibujarArticulos(Graphics2D g2){
+        for(int i = 0;ArticList.size() <= i;i++){
+            System.out.println("IIIIIIIIII: "+i);
+            ArticList.get(i).dibujarArticulo(g2);;
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -60,15 +70,18 @@ public class MiPanel extends JPanel{
         }
         if(contConsum == 2){
             consumList.get(0).dibujarConsumidor(g2,0);
-            consumList.get(0).dibujarConsumidor(g2,165);
+            consumList.get(1).dibujarConsumidor(g2,165);
         }
         if(contConsum == 3){
             consumList.get(0).dibujarConsumidor(g2,0);
-            consumList.get(0).dibujarConsumidor(g2,165);
-            consumList.get(0).dibujarConsumidor(g2,330);
+            consumList.get(1).dibujarConsumidor(g2,165);
+            consumList.get(2).dibujarConsumidor(g2,330);
         }
+
+        System.out.println("Tamano de arcticlist: "+ArticList.size());
         
-        ProductoConsumidor.monitor.dibujarProductos(g2);
+        this.dibujarArticulos(g2);
+        //SProductoConsumidor.monitor.dibujarProductos(g2);
 
         /*productos de arriba
         g2.fillOval(241, 160, 54, 54);

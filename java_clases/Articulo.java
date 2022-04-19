@@ -15,6 +15,7 @@ public class Articulo {
     public Articulo(){
     }
 
+
     public void dibujarArticulo(Graphics2D g2){
 
         switch(index){

@@ -1,5 +1,9 @@
 package Proyecto_Final.java_clases;
 
+import java.io.InterruptedException;
+
+import Proyecto_Final.Ventanas.MiPanel;
+
 import java.awt.Graphics2D;
 import java.awt.Color;
 
@@ -7,13 +11,20 @@ public class Consumidor extends Thread{
 
     int[] x = {662,630,690,706,617,635,55};
     int[] y = {83,142,180,100,68,71,39,44};
+    MiPanel mp;
+    Articulo aux;
+
+    public Consumidor(MiPanel mpx){
+        this.mp = mpx;
+    }
 
     @Override
     public void run(){
         try {   
             while(true){
-                System.out.println("El consumidor: "+Thread.currentThread().getName()+" consume ");
-                sleep(500);
+                this.consumir();
+                this.quitarArticulo();
+                sleep(5000);
             }   
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -31,4 +42,17 @@ public class Consumidor extends Thread{
         g2.fillOval(x[5],y[6] + abajo , x[6], y[7] );
     }
 
+    public void consumir(){
+        try {
+            aux = ProductoConsumidor.monitor.pop();
+            System.out.println("El consumidor: "+Thread.currentThread().getName()+" consume "+aux.index);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void quitarArticulo(){
+        mp.ArticList.remove(aux);
+        mp.repaint(); 
+    }
 }

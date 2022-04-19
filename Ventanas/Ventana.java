@@ -14,19 +14,19 @@ public class Ventana extends JFrame {
         mp = new MiPanel(this);
         this.add(mp);
 
-        Consumidor c = new Consumidor();
+        Consumidor c = new Consumidor(mp);
         c.setName("consumidor 1");
         iniciarThread(c);
 
         mp.nuevoConsumidor(c);
 
-        // Consumidor c1 = new Consumidor();
+        // Consumidor c1 = new Consumidor(mp);
         // c1.setName("consumidor 2");
         // iniciarThread(c1);
 
         // mp.nuevoConsumidor(c1);
 
-        // Consumidor c1 = new Consumidor();
+        // Consumidor c1 = new Consumidor(mp);
         // c1.setName("consumidor 2");
         // mp.startThreat(c1);
 
@@ -54,10 +54,16 @@ public class Ventana extends JFrame {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
+        /*
         while(true){
             mp.repaint();
-        }
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+        }*/
     }
 
     //este metodo usa generics para poder funcionar tanto con productores como con consumidores
